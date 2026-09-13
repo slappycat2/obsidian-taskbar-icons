@@ -21,6 +21,11 @@ if ($running) {
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
 Copy-Item (Join-Path $dist '*') $dest -Recurse -Force
 
+# Sample icons: the icon picker opens here by default.
+$samples = Join-Path $env:LOCALAPPDATA 'ObsidianTaskbarIcons\samples'
+New-Item -ItemType Directory -Force -Path $samples | Out-Null
+Copy-Item (Join-Path $root 'samples\icons\*.ico') $samples -Force
+
 $exe = Join-Path $dest 'ObsidianTaskbarIcons.exe'
 $lnk = Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs\Obsidian Taskbar Icons.lnk'
 $ws = New-Object -ComObject WScript.Shell
@@ -32,3 +37,9 @@ $sc.Save()
 
 Write-Host "Installed to $exe" -ForegroundColor Green
 Write-Host "Start-menu entry: Obsidian Taskbar Icons"
+
+# The watcher owns the window icons of open vaults; killing it above blanked them, so put them back.
+if (Get-Process Obsidian -ErrorAction SilentlyContinue) {
+    Write-Host "Obsidian is running; re-tagging its windows and starting the icon watcher..." -ForegroundColor Cyan
+    & $exe tag
+}

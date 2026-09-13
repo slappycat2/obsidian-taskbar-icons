@@ -161,6 +161,8 @@ internal sealed class MainForm : Form
             Filter = IconConverter.FileFilter,
             CheckFileExists = true,
         };
+        var startIn = _iconSource is not null ? Path.GetDirectoryName(_iconSource) : AppPaths.SampleIcons;
+        if (startIn is not null) dlg.InitialDirectory = startIn;
         if (dlg.ShowDialog(this) != DialogResult.OK) return;
         if (!IconConverter.IsSupported(dlg.FileName))
         {
@@ -312,7 +314,9 @@ internal sealed class MainForm : Form
     private void Retag()
     {
         var n = Launcher.TagAll();
-        SetStatus(n == 0 ? "No open Obsidian windows matched a saved taskbar icon." : $"Re-tagged {n} open window(s).");
+        SetStatus(n == 0
+            ? "No open Obsidian windows matched a saved taskbar icon."
+            : $"Re-tagged {n} open window(s); the icon watcher keeps their window icons in place.");
     }
 
     private void RemoveSelected()

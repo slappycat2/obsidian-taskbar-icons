@@ -3,7 +3,10 @@ using ObsidianTaskbarIcons.Interop;
 
 namespace ObsidianTaskbarIcons;
 
-/// <summary>The headless side of the tool: open a vault, wait for its window, stamp its taskbar identity.</summary>
+/// <summary>
+/// The headless side of the tool: open a vault, wait for its window, stamp its taskbar identity, and make sure
+/// the resident <see cref="Watcher"/> is up so the window also carries the profile's icon.
+/// </summary>
 internal static class Launcher
 {
     private static readonly TimeSpan LaunchTimeout = TimeSpan.FromSeconds(30);
@@ -20,6 +23,7 @@ internal static class Launcher
         if (existing.Count > 0)
         {
             foreach (var w in existing) Stamp(w.Handle, profile, exe);
+            Watcher.EnsureRunning();
             WindowIdentity.Activate(existing[0].Handle);
             return new LaunchResult(true, $"Vault '{profile.VaultName}' was already open; window re-tagged and activated.");
         }
@@ -45,6 +49,7 @@ internal static class Launcher
             // Obsidian may still be finishing vault load; apply once more so our identity is the last word.
             Thread.Sleep(RestampDelay);
             foreach (var w in MatchingWindows(profile)) Stamp(w.Handle, profile, exe);
+            Watcher.EnsureRunning();
 
             return new LaunchResult(true, $"Vault '{profile.VaultName}' opened and tagged as {profile.Aumid}.");
         }
@@ -68,11 +73,13 @@ internal static class Launcher
             tagged++;
         }
 
+        Watcher.EnsureRunning();
         return tagged;
     }
 
     public static IEnumerable<string> InspectLines()
     {
+        yield return Watcher.IsRunning() ? "Watcher: running" : "Watcher: not running";
         var windows = WindowIdentity.FindObsidianWindows();
         if (windows.Count == 0)
         {
@@ -179,8 +186,10 @@ internal static class Cli
                 foreach (var line in Launcher.InspectLines()) WriteLine(line);
                 return 0;
             }
+            case "watch":
+                return Watcher.Run();
             default:
-                Fail("Commands: create --vault <folder> [--name X] [--icon file] | launch --id <slug> | tag | inspect  (no arguments opens the window)");
+                Fail("Commands: create --vault <folder> [--name X] [--icon file] | launch --id <slug> | tag | watch | inspect  (no arguments opens the window)");
                 return 2;
         }
     }

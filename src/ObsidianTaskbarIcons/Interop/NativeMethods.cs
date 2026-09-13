@@ -11,6 +11,19 @@ internal static class NativeMethods
     public const uint GW_OWNER = 4;
     public const int ATTACH_PARENT_PROCESS = -1;
 
+    public const uint WM_SETICON = 0x0080;
+    public const uint WM_GETICON = 0x007F;
+    public const int ICON_SMALL = 0;
+    public const int ICON_BIG = 1;
+
+    public const uint IMAGE_ICON = 1;
+    public const uint LR_LOADFROMFILE = 0x0010;
+
+    public const int SM_CXICON = 11;
+    public const int SM_CXSMICON = 49;
+
+    public const uint SMTO_ABORTIFHUNG = 0x0002;
+
     [DllImport("ole32.dll")]
     public static extern int PropVariantClear(ref PropVariant pvar);
 
@@ -20,6 +33,9 @@ internal static class NativeMethods
 
     [DllImport("user32.dll")]
     public static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+
+    [DllImport("user32.dll")]
+    public static extern bool IsWindow(IntPtr hWnd);
 
     [DllImport("user32.dll")]
     public static extern bool IsWindowVisible(IntPtr hWnd);
@@ -44,6 +60,19 @@ internal static class NativeMethods
 
     [DllImport("user32.dll")]
     public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+    [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    public static extern IntPtr LoadImage(IntPtr hInst, string name, uint type, int cx, int cy, uint fuLoad);
+
+    [DllImport("user32.dll")]
+    public static extern bool DestroyIcon(IntPtr hIcon);
+
+    [DllImport("user32.dll")]
+    public static extern int GetSystemMetrics(int nIndex);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern IntPtr SendMessageTimeout(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam, uint fuFlags,
+        uint uTimeout, out IntPtr lpdwResult);
 
     [DllImport("kernel32.dll")]
     public static extern bool AttachConsole(int dwProcessId);
