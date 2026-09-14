@@ -12,7 +12,7 @@
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
     <InvariantGlobalization>true</InvariantGlobalization>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-    <Version>0.1.0</Version>
+    <Version>1.0.0</Version>
     <Product>Obsidian Taskbar Icons</Product>
     <Description>Per-vault taskbar buttons with custom icons for Obsidian on Windows</Description>
   </PropertyGroup>
