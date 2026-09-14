@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/gemRed.png" width="160" alt="Obsidian Taskbar Icons">
+</p>
+
 # Obsidian Taskbar Icons
 
 [![Latest release](https://img.shields.io/github/v/release/slappycat2/obsidian-taskbar-icons?logo=github&label=release)](https://github.com/slappycat2/obsidian-taskbar-icons/releases/latest)
@@ -16,16 +20,39 @@
 [![Tested with Obsidian](https://img.shields.io/badge/tested%20with-Obsidian%201.14-7C3AED?logo=obsidian&logoColor=white)](https://obsidian.md)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-support%20this%20project-FF5E5B?logo=kofi&logoColor=white)](https://ko-fi.com/swenlarsen)
 
-Give each [Obsidian](https://obsidian.md) vault its own button on the Windows taskbar, with an icon
-you choose. Click the button and that vault opens. Its window groups under that button instead of
-under the generic Obsidian one, so two or three open vaults show up on the taskbar as separate,
-recognisable icons.
+---
 
-Windows 11 only. Windows 10 should work but is untested. No admin rights are needed, and Obsidian
-itself is not modified.
+### Do you use Windows? Do you have multiple, open vaults at once? Tired of not being able to tell which is which? Want to buy a car?
+
+If you answered, "YES!" to the first three, I think I can help. I wrote a tool that will manage separate taskbar icons with separate names for each of your vaults. Features include:
+
+## :fire: Features
+- Each [Obsidian](https://obsidian.md) vault can have its own taskbar button.
+- Each button can have a unique name and icon. Use the included icons or roll your own.
+- Doesn't touch Obsidian, and no plugins involved, so no danger or impact there.
+- Click the Vault's taskbar button and that vault opens. Clean and simple.
+- Taskbar Icon windows stay grouped together for that vault alone. No co-ed funny business!
+- Create as many as you need, pin or unpin just like any other taskbar icon.
+- Changing the icon in the properties panel works, too. Just like a big computer!
+- Alt-Tab, Task View and the taskbar thumbnails show the vault icon instead of Obsidian's.
+- Easy setup, and easy uninstall.
+- Free! So, download it as many times as you like! Makes a great stocking stuffer!
+
+---
+> If this little script helps you in any way, please help a poor, vibe coder out:\
+>\
+> ***Please support my token addiction!*** Give me a :star: (see above)\
+> And/or [buy me a :beer: coffee!](https://ko-fi.com/swenlarsen). :grin: It's greatly appreciated!\
+>\
+> No? **Don't worry about it.** ***Enjoy!*** (Who's got a light?)
+
+---
+
+*Tl;Dr* - Skip the boring, AI generated stuff and :rocket: ***[take me to the install!](#installation)***
+
+---
 
 ## The problem
-
 Windows groups taskbar buttons by an identifier called the *AppUserModelID*. Obsidian gives the
 same identifier (`md.obsidian`) to every window it opens. As a result, every vault lands under the
 same button, and a pinned shortcut can only open "Obsidian", never a specific vault.
@@ -37,7 +64,7 @@ The obvious workarounds do not help:
 - A shortcut to an `obsidian://` link opens the correct vault, but the window still groups under
   the generic button, and the shortcut cannot reliably keep a custom icon.
 
-## How the tool solves it
+### How the tool solves it
 
 1. It writes a Start menu shortcut for each vault. The shortcut carries a unique identifier
    (`Obsidian.Vault.<name>`) and the icon you selected. When you pin that shortcut, the taskbar
@@ -59,7 +86,8 @@ The obvious workarounds do not help:
 Everything happens from outside Obsidian. Nothing is patched or injected. You can leave Obsidian's
 *Custom app icon* setting as it is; the watcher's icon simply sits on top of it.
 
-## Installation
+---
+## :rocket:Installation
 
 ### With the installer (recommended)
 
@@ -95,7 +123,8 @@ The `install.ps1` script builds a single-file executable, copies it and the samp
 same folder the installer uses, and adds the Start menu entry. Shortcuts created by the tool always
 point at that installed copy, so rebuilding later never breaks an existing pin.
 
-## Usage
+---
+## :notebook: Usage
 
 1. Open **Obsidian Taskbar Icons** from the Start menu. The window shows the tool's own red gem at
    the top with its version number.
@@ -106,7 +135,7 @@ point at that installed copy, so rebuilding later never breaks an existing pin.
    and `.dll`. Images are converted automatically into a multi-size icon (16 to 256 pixels). If you
    do not select an icon, the tool uses Obsidian's icon. **Browse** opens in the
    [sample icons](samples/icons) folder, which contains eight Obsidian-style gems in different
-   colours: blue, cyan, green, magenta, purple, red, sky and yellow.
+   colors: blue, cyan, green, magenta, purple, red, sky and yellow.
 5. Click **Create shortcut & launch**. The vault opens and appears as its own taskbar button.
 6. Right-click that taskbar button and choose **Pin to taskbar**. That is the last step.
 
