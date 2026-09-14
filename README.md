@@ -1,5 +1,21 @@
 # Obsidian Taskbar Icons
 
+[![Latest release](https://img.shields.io/github/v/release/slappycat2/obsidian-taskbar-icons?logo=github&label=release)](https://github.com/slappycat2/obsidian-taskbar-icons/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/slappycat2/obsidian-taskbar-icons/total?logo=github&label=downloads)](https://github.com/slappycat2/obsidian-taskbar-icons/releases)
+[![Build](https://github.com/slappycat2/obsidian-taskbar-icons/actions/workflows/build.yml/badge.svg)](https://github.com/slappycat2/obsidian-taskbar-icons/actions/workflows/build.yml)
+[![License: MIT](https://img.shields.io/github/license/slappycat2/obsidian-taskbar-icons)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/slappycat2/obsidian-taskbar-icons)](https://github.com/slappycat2/obsidian-taskbar-icons/commits/main)
+[![Open issues](https://img.shields.io/github/issues/slappycat2/obsidian-taskbar-icons)](https://github.com/slappycat2/obsidian-taskbar-icons/issues)
+[![Code size](https://img.shields.io/github/languages/code-size/slappycat2/obsidian-taskbar-icons)](https://github.com/slappycat2/obsidian-taskbar-icons)
+[![Stars](https://img.shields.io/github/stars/slappycat2/obsidian-taskbar-icons?style=flat&logo=github)](https://github.com/slappycat2/obsidian-taskbar-icons/stargazers)
+
+[![Windows 11](https://img.shields.io/badge/platform-Windows%2011-0078D4)](https://www.microsoft.com/windows/windows-11)
+[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download)
+[![Language](https://img.shields.io/github/languages/top/slappycat2/obsidian-taskbar-icons?logo=github)](src/ObsidianTaskbarIcons)
+[![Installer: Inno Setup](https://img.shields.io/badge/installer-Inno%20Setup-2F5D8A)](https://jrsoftware.org/isinfo.php)
+[![Tested with Obsidian](https://img.shields.io/badge/tested%20with-Obsidian%201.14-7C3AED?logo=obsidian&logoColor=white)](https://obsidian.md)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-support%20this%20project-FF5E5B?logo=kofi&logoColor=white)](https://ko-fi.com/swenlarsen)
+
 Give each [Obsidian](https://obsidian.md) vault its own button on the Windows taskbar, with an icon
 you choose. Click the button and that vault opens. Its window groups under that button instead of
 under the generic Obsidian one, so two or three open vaults show up on the taskbar as separate,
