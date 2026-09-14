@@ -187,9 +187,9 @@ internal static class Cli
                 return 0;
             }
             case "watch":
-                return Watcher.Run();
+                return Watcher.Run(args.Any(a => string.Equals(a, "--persistent", StringComparison.OrdinalIgnoreCase)));
             default:
-                Fail("Commands: create --vault <folder> [--name X] [--icon file] | launch --id <slug> | tag | watch | inspect  (no arguments opens the window)");
+                Fail("Commands: create --vault <folder> [--name X] [--icon file] | launch --id <slug> | tag | watch [--persistent] | inspect  (no arguments opens the window)");
                 return 2;
         }
     }

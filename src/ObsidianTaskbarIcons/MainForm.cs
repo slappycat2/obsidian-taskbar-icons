@@ -26,6 +26,7 @@ internal sealed class MainForm : Form
     public MainForm()
     {
         Text = "Obsidian Taskbar Icons";
+        Icon = AppIcon.Load(32);
         StartPosition = FormStartPosition.CenterScreen;
         MinimumSize = new Size(720, 580);
         Size = new Size(780, 640);
@@ -33,16 +34,18 @@ internal sealed class MainForm : Form
         AutoScaleDimensions = new SizeF(96F, 96F);
         AutoScaleMode = AutoScaleMode.Dpi;
 
-        var root = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 4, Padding = new Padding(12) };
+        var root = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 5, Padding = new Padding(12) };
+        root.RowStyles.Add(new RowStyle(SizeType.AutoSize));
         root.RowStyles.Add(new RowStyle(SizeType.AutoSize));
         root.RowStyles.Add(new RowStyle(SizeType.AutoSize));
         root.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
         root.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
-        root.Controls.Add(BuildNewGroup(), 0, 0);
-        root.Controls.Add(_guide, 0, 1);
-        root.Controls.Add(BuildProfilesGroup(), 0, 2);
-        root.Controls.Add(_status, 0, 3);
+        root.Controls.Add(BuildHeader(), 0, 0);
+        root.Controls.Add(BuildNewGroup(), 0, 1);
+        root.Controls.Add(_guide, 0, 2);
+        root.Controls.Add(BuildProfilesGroup(), 0, 3);
+        root.Controls.Add(_status, 0, 4);
         Controls.Add(root);
 
         LoadVaults();
@@ -51,6 +54,29 @@ internal sealed class MainForm : Form
         SetStatus(_obsidianExe is null
             ? "Warning: Obsidian.exe was not found; the obsidian:// URI handler must still be registered."
             : "Ready.");
+    }
+
+    /// <summary>The app's own icon with its name and version, across the top of the window.</summary>
+    private static Control BuildHeader()
+    {
+        var logo = new PictureBox { Size = new Size(48, 48), SizeMode = PictureBoxSizeMode.Zoom, Margin = new Padding(0, 0, 10, 8) };
+        using (var icon = AppIcon.Load(48)) logo.Image = icon.ToBitmap();
+
+        var title = new Label { Text = "Obsidian Taskbar Icons", AutoSize = true, Font = new Font("Segoe UI Semibold", 14f), Margin = new Padding(0) };
+        var subtitle = new Label
+        {
+            Text = $"Version {AppIcon.Version}  •  one taskbar button per vault, each with its own icon",
+            AutoSize = true, ForeColor = SystemColors.GrayText, Margin = new Padding(1, 0, 0, 0),
+        };
+        var text = new FlowLayoutPanel { FlowDirection = FlowDirection.TopDown, AutoSize = true, WrapContents = false, Margin = new Padding(0), Anchor = AnchorStyles.Left };
+        text.Controls.AddRange(new Control[] { title, subtitle });
+
+        var header = new TableLayoutPanel { AutoSize = true, ColumnCount = 2, Dock = DockStyle.Top, Margin = new Padding(0, 0, 0, 6) };
+        header.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+        header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+        header.Controls.Add(logo, 0, 0);
+        header.Controls.Add(text, 1, 0);
+        return header;
     }
 
     private GroupBox BuildNewGroup()
