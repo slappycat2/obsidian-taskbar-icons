@@ -48,7 +48,7 @@ If you answered, "YES!" to the first three, I think I can help. I wrote a tool t
 
 ---
 
-*Tl;Dr* - Skip the boring, AI generated stuff and :rocket: ***[take me to the install!](#installation)***
+*Tl;Dr* - Skip the boring, AI generated stuff and :rocket: ***[take me to the install!](#🚀 installation)***
 
 ---
 
