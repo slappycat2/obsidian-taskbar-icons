@@ -87,6 +87,7 @@ Everything happens from outside Obsidian. Nothing is patched or injected. You ca
 *Custom app icon* setting as it is; the watcher's icon simply sits on top of it.
 
 ---
+<a id="installation"></a>
 ## :rocket:Installation
 
 ### With the installer (recommended)
