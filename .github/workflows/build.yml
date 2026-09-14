@@ -23,7 +23,7 @@ jobs:
       - name: Publish single-file exe
         run: dotnet publish src\ObsidianTaskbarIcons\ObsidianTaskbarIcons.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o dist
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: ObsidianTaskbarIcons-win-x64
           path: dist\ObsidianTaskbarIcons.exe
