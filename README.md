@@ -19,6 +19,8 @@
 
 ---
 
+# Obsidian Taskbar Icons
+
 ### Do you use Windows? Do you have multiple, open vaults at once? Tired of not being able to tell which is which? Want to buy a car?
 
 If you answered, "YES!" to the first three, I think I can help. I wrote a tool that will manage separate taskbar icons with separate names for each of your vaults. Features include:
