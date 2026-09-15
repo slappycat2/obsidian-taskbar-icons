@@ -1,8 +1,5 @@
-<p align="center">
-  <img src="docs/gemRed.png" width="160" alt="Obsidian Taskbar Icons">
-</p>
+[![Red Gemstone](/docs/oti_gemRed_banner.png)](https://github.com/slappycat2/obsidian-taskbar-icons)
 
-# Obsidian Taskbar Icons
 
 [![Latest release](https://img.shields.io/github/v/release/slappycat2/obsidian-taskbar-icons?logo=github&label=release)](https://github.com/slappycat2/obsidian-taskbar-icons/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/slappycat2/obsidian-taskbar-icons/total?logo=github&label=downloads)](https://github.com/slappycat2/obsidian-taskbar-icons/releases)
